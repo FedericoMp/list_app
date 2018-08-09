@@ -1,3 +1,27 @@
-.card-header{
+.btn-success:focus, .btn-danger:focus {
+    box-shadow: none!important;
+}
+.btn.focus, .btn:focus {
+    box-shadow: none!important;
+}
+
+.form-control:focus{
+    box-shadow: none!important;
+    border-color: 1px solid #ced4da!important;
+}
+
+.fixed-top{
+    margin-top: 50px;
+}
+
+.list-items{
+    margin-top: 130px;
+}
+
+.container.fixed-top{
+    background-color: #3c4956;
+}
+
+.alert.alert-danger,.alert.alert-succes{
     text-align: center;
 }

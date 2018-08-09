@@ -1,22 +1,39 @@
-<div class="card mt-4 card-master">
-  <div class="card-header">
-    ListApp 
-  </div>
-  <div class="card-body">
-    <form>
-        <div class="input-group mt-2 mb-2">
-            <input type="text" class="form-control" placeholder="New iTem to list..." aria-label="New iTem to list..." aria-describedby="task-add" name="task" #taskInput>
+<div class="container fixed-top">
+    <form (submit)="noSub()">
+        <div class="input-group mt-3 mb-3">
+            <input type="text" class="form-control" placeholder="New iTem to list..." aria-label="New iTem to list..." aria-describedby="task-add" name="task" id="task" #taskInput >
             <div class="input-group-append">
-              <button class="btn btn-outline-success" type="button" id="task-add" (click)="addNew(taskInput.value)"><i class="fas fa-shopping-cart"></i></button>
+              <button class="btn btn-success" type="button" id="task-add" (click)="addNew(taskInput.value); taskInput.value = ''" (keyup.enter)="addNew(taskInput.value); taskInput.value = ''">
+                <i class="fas fa-shopping-cart"></i>
+              </button>
             </div>
           </div>
     </form>
-  </div>
+    <div class="alert alert-danger" *ngIf="validated" role="alert">
+        Please, add item to list!
+    </div>
 </div>
-<div class="mt-3">
+
+<div class="list-items">
+    <div class="alert alert-warning alert-dismissible fade show" *ngIf="this.tasks.length <= 0" role="alert">
+        <strong>List App says:</strong> You should check in on some of those fields below.
+      </div>
+
+      <div class="card my-3" *ngIf="this.tasks.length > 0">
+          <div class="card-body">
+              <span class="mt-1"><strong>Delete All</strong> from list.</span>
+              <button type="button" class="btn btn-warning btn-sm float-right" (click)="clearToDo()">
+                  <i class="fas fa-eraser"></i>
+                </button>
+          </div>
+        </div>
+
     <ul class="list-group">
         <li class="list-group-item" *ngFor="let task of tasks; let idx = index">
-          {{task}}<button type="button" class="btn btn-danger btn-sm float-right" (click)="cancelTask(idx)"><i class="fas fa-trash-alt"></i></button>
+            <span class="mt-1">{{idx + 1}}. {{task}}</span>
+          <button type="button" class="btn btn-danger btn-sm float-right" (click)="cancelTask(idx)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
         </li>
     </ul>
   </div>
