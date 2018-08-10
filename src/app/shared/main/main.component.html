@@ -1,7 +1,7 @@
 <div class="container fixed-top">
     <form (submit)="noSub()">
         <div class="input-group mt-3 mb-3">
-            <input type="text" class="form-control" placeholder="New iTem to list..." aria-label="New iTem to list..." aria-describedby="task-add" name="task" id="task" #taskInput >
+            <input type="text" class="form-control" placeholder="Agregar items a la lista..." aria-label="Agregar items a la lista..." aria-describedby="task-add" name="task" id="task" #taskInput >
             <div class="input-group-append">
               <button class="btn btn-success" type="button" id="task-add" (click)="addNew(taskInput.value); taskInput.value = ''" (keyup.enter)="addNew(taskInput.value); taskInput.value = ''">
                 <i class="fas fa-shopping-cart"></i>
@@ -10,25 +10,30 @@
           </div>
     </form>
     <div class="alert alert-danger" *ngIf="validated" role="alert">
-        Please, add item to list!
+        Por favor, agregar item valido!
     </div>
 </div>
 
 <div class="list-items">
-    <div class="alert alert-warning alert-dismissible fade show" *ngIf="this.tasks.length <= 0" role="alert">
-        <strong>List App says:</strong> You should check in on some of those fields below.
-      </div>
+    <div class="alert alert-warning fade show" *ngIf="this.tasks.length <= 0" role="alert">
+        <strong>List App mensaje:</strong> La lista esta vacia aun, debe agregar datos en el campo de texto.
+    </div>
 
-      <div class="card my-3" *ngIf="this.tasks.length > 0">
-          <div class="card-body">
-              <span class="mt-1"><strong>Delete All</strong> from list.</span>
-              <button type="button" class="btn btn-warning btn-sm float-right" (click)="clearToDo()">
-                  <i class="fas fa-eraser"></i>
+    <ul class="list-group mb-3 text-center" *ngIf="this.tasks.length > 0">
+        <li class="list-group-item active">List App opciones:</li>
+        <li class="list-group-item">
+                <span><strong>Borrar toda</strong> la lista </span>
+                <button type="button" class="btn btn-warning btn-sm" (click)="clearToDo()">
+                    <i class="fas fa-eraser"></i>
                 </button>
-          </div>
-        </div>
+        </li>
+        <li class="list-group-item">
+                <h4><span class="badge badge-success">Cantidad Items: <span class="badge badge-light">{{this.tasks.length}}</span></span></h4>
+        </li>
+    </ul>
 
     <ul class="list-group">
+        <li class="list-group-item active  text-center" *ngIf="this.tasks.length > 0">Items listados:</li>
         <li class="list-group-item" *ngFor="let task of tasks; let idx = index">
             <span class="mt-1">{{idx + 1}}. {{task}}</span>
           <button type="button" class="btn btn-danger btn-sm float-right" (click)="cancelTask(idx)">

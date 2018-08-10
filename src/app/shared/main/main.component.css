@@ -10,18 +10,24 @@
     border-color: 1px solid #ced4da!important;
 }
 
-.fixed-top{
-    margin-top: 50px;
-}
-
 .list-items{
-    margin-top: 130px;
+    margin-top: 85px;
 }
 
 .container.fixed-top{
-    background-color: #3c4956;
+    background-color: #3e3e3e!important;
 }
 
-.alert.alert-danger,.alert.alert-succes{
-    text-align: center;
+.list-group .list-group-item.active{
+    border: 1px solid rgba(0,0,0,.125)!important;
+    background-color: #3e3e3e!important;
+}
+
+.btn.btn-success{
+    background-color: #28a78a!important;
+}
+.badge.badge-success{
+    font-weight: 300;
+    padding: 10px;
+    background-color: #28a78a!important;
 }
