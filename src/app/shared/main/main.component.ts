@@ -26,7 +26,7 @@ export class MainComponent implements OnInit {
       localStorage.setItem( 'items', JSON.stringify( this.tasks ) );
     } else {
       this.validated = true;
-      setTimeout(function(){ this.validated = false; }.bind( this ), 1000 );
+      setTimeout(function(){ this.validated = false; }.bind( this ), 2000 );
     }
   }
 
