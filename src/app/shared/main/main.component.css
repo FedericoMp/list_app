@@ -1,3 +1,7 @@
+.container.fixed-top{
+    width: 540px;
+}
+
 .btn-success:focus, .btn-danger:focus {
     box-shadow: none!important;
 }

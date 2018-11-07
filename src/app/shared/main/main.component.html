@@ -1,9 +1,9 @@
 <div class="container fixed-top">
-    <form (submit)="noSub()">
+    <form (submit)="noSub()" autocomplete="off">
         <div class="input-group mt-3 mb-3">
-            <input type="text" class="form-control" placeholder="Agregar items a la lista..." aria-label="Agregar items a la lista..." aria-describedby="task-add" name="task" id="task" #taskInput >
+            <input type="text" class="form-control" placeholder="Agregar items a la lista..." aria-label="Agregar items a la lista..." aria-describedby="task-add" name="task" id="task" #taskInput (keyup.enter)="addNew(taskInput.value); taskInput.value = ''" autofocus >
             <div class="input-group-append">
-              <button class="btn btn-success" type="button" id="task-add" (click)="addNew(taskInput.value); taskInput.value = ''" (keyup.enter)="addNew(taskInput.value); taskInput.value = ''">
+              <button class="btn btn-success" type="button" id="task-add" (click)="addNew(taskInput.value); taskInput.value = ''">
                 <i class="fas fa-shopping-cart"></i>
               </button>
             </div>
